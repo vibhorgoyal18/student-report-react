@@ -1,29 +1,37 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
 
 function App() {
-    let [counter, setCounter] = useState(0);
-
-    let divStyle = {
-        height: "100vh",
-        paddingLeft: "50%",
-        paddingTop: "20%",
-    };
-
-    const onButtonClick = () => {
-        setCounter(counter + 1);
-        console.log(counter);
-    };
+    const students = [
+        {
+            id: 1,
+            name: "Rajesh",
+            course: "B.tech",
+            sem: "V",
+            maths: 42,
+            english: 72,
+            science: 31,
+        },
+        {
+            id: 2,
+            name: "Rohit",
+            course: "BCA",
+            sem: "V",
+            maths: 47,
+            english: 54,
+            science: 76,
+        },
+    ];
     return (
-        <div style={divStyle}>
-            <div style={{ fontSize: "20px" }}>
-                The value of counter is {counter}
+        <>
+            <Header></Header>
+            <div className="container-fluid mt-4">
+                <div className="row">
+                    <Form></Form>
+                    <Report students={students}></Report>
+                </div>
             </div>
-            <button className="btn btn-primary" onClick={onButtonClick}>
-                Increment
-            </button>
-        </div>
+        </>
     );
 }
 
