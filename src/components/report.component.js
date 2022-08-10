@@ -18,16 +18,8 @@ export function Report(props) {
                 </select>
             </div>
             <div className="row mt-4">
-                <ReportCard studentInfo={props.students[0]}></ReportCard>
-                <ReportCard
-                    id={2}
-                    name="Rohit"
-                    course="B.tech"
-                    sem="V"
-                    maths={23}
-                    english={76}
-                    science={82}
-                ></ReportCard>
+                <ReportCard studentInfo={props.students[0]}/>
+                <ReportCard studentInfo={props.students[1]}/>
             </div>
         </div>
     );

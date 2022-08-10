@@ -1,5 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/header.component";
+import Form from "./components/form.component";
+import {Report} from "./components/report.component";
 
 function App() {
     const students = [

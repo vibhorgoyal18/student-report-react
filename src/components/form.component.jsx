@@ -1,30 +1,42 @@
-import React from "react";
+import React, {useState} from "react";
+import InputBox from "./input.component";
 
 const Form = () => {
-    const test = () => "";
+    let [student, setStudent] = useState({
+        id: null,
+        name: null,
+        course: null,
+        sem: null,
+        english: null,
+        maths: null,
+        science: null,
+    })
+    const addStudent = () => {
+        console.log(student)
+    }
+
+    const handleInputChange = (event) => {
+        setStudent(() => ({...student, [event.target.id]: event.target.value}));
+    }
+    console.log(student);
     return (
         <div className="col-3">
-            <form onSubmit={test}>
+            <form onSubmit={addStudent}>
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-6">
-                            <label htmlFor="id">ID:</label>
-                            <input
-                                type="number"
-                                className="form-control"
-                                id="id"
-                                placeholder="ID"
-                            />
-                        </div>
-                        <div className="col-6">
-                            <label htmlFor="name">Name:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="name"
-                                placeholder="Name"
-                            />
-                        </div>
+                        <InputBox
+                            id="id"
+                            placeholder="ID"
+                            type="number"
+                            value={student.id}
+                            handleInputChange={handleInputChange}
+                        />
+                        <InputBox
+                            id="name"
+                            placeholder="Name"
+                            value={student.name}
+                            handleInputChange={handleInputChange}
+                        />
                     </div>
                     <div className="row mt-2">
                         <div className="col-6">
@@ -34,6 +46,8 @@ const Form = () => {
                                 className="form-control"
                                 id="course"
                                 placeholder="Course"
+                                value={student.course ?? ""}
+                                onChange={handleInputChange}
                             />
                         </div>
                         <div className="col-6">
@@ -43,6 +57,8 @@ const Form = () => {
                                 className="form-control"
                                 id="sem"
                                 placeholder="Semmester"
+                                value={student.sem ?? ""}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -57,6 +73,8 @@ const Form = () => {
                                 className="form-control"
                                 id="maths"
                                 placeholder="Maths"
+                                value={student.maths ?? ""}
+                                onChange={handleInputChange}
                             />
                         </div>
                         <div className="col-4">
@@ -68,6 +86,8 @@ const Form = () => {
                                 className="form-control"
                                 id="english"
                                 placeholder="English"
+                                value={student.english ?? ""}
+                                onChange={handleInputChange}
                             />
                         </div>
                         <div className="col-4">
@@ -79,12 +99,14 @@ const Form = () => {
                                 className="form-control"
                                 id="science"
                                 placeholder="Science"
+                                value={student.science ?? ""}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
                     <button
                         className="btn btn-success mt-4 ps-5 pe-5"
-                        onClick={test}
+
                     >
                         Add
                     </button>

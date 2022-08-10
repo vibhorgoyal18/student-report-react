@@ -2,9 +2,7 @@ import React from "react";
 
 export default function ReportCard(props) {
     const student = props.studentInfo;
-    console.log(student?.maths);
-    const total = student?.maths + student?.english + student?.science;
-    console.log(total);
+    const total = student?.maths??"" + student?.english??"" + student?.science??"";
     const passOrFail =
         student?.maths > 33 && student?.english > 33 && student?.science > 33
             ? "Pass"
@@ -29,7 +27,7 @@ export default function ReportCard(props) {
                         color: "red",
                     }}
                 >
-                    En No: {student?.id}
+                    En No: {student?.id??""}
                 </span>
                 <span
                     style={{
@@ -41,7 +39,7 @@ export default function ReportCard(props) {
                         color: passOrFail === "Pass" ? "green" : "red",
                     }}
                 >
-                    {passOrFail}
+                    {passOrFail??""}
                 </span>
                 <div
                     style={{
@@ -52,7 +50,7 @@ export default function ReportCard(props) {
                         justifyContent: "center",
                     }}
                 >
-                    {student?.name}
+                    {student?.name??""}
                 </div>
                 <div className="card-body">
                     <table className="table">
@@ -65,22 +63,22 @@ export default function ReportCard(props) {
                         <tbody>
                             <tr>
                                 <td>Maths</td>
-                                <td>{student?.maths}</td>
+                                <td>{student?.maths??""}</td>
                             </tr>
                             <tr>
                                 <td>English</td>
-                                <td>{student?.english}</td>
+                                <td>{student?.english??""}</td>
                             </tr>
                             <tr>
                                 <td>Science</td>
-                                <td>{student?.science}</td>
+                                <td>{student?.science??""}</td>
                             </tr>
                         </tbody>
                     </table>
                     <div className="row">
                         <div className="col-6 ps-3 fw-bold">Total</div>
                         <div className="col-6" style={{ paddingLeft: "26px" }}>
-                            {total}
+                            {total??""}
                         </div>
                     </div>
                 </div>
