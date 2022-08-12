@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import InputBox from "./input.component";
 
-const Form = () => {
+const Form = (props) => {
     let [student, setStudent] = useState({
         id: null,
         name: null,
@@ -11,14 +11,15 @@ const Form = () => {
         maths: null,
         science: null,
     })
-    const addStudent = () => {
-        console.log(student)
+    const addStudent = (event) => {
+        event.preventDefault();
+
+        props.addStudentFromForm(student);
     }
 
     const handleInputChange = (event) => {
         setStudent(() => ({...student, [event.target.id]: event.target.value}));
     }
-    console.log(student);
     return (
         <div className="col-3">
             <form onSubmit={addStudent}>
@@ -105,9 +106,8 @@ const Form = () => {
                         </div>
                     </div>
                     <button
-                        className="btn btn-success mt-4 ps-5 pe-5"
-
-                    >
+                        type="submit"
+                        className="btn btn-success mt-4 ps-5 pe-5">
                         Add
                     </button>
                 </div>

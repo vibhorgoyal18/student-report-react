@@ -2,13 +2,13 @@ import React from "react";
 
 export default function ReportCard(props) {
     const student = props.studentInfo;
-    const total = student?.maths??"" + student?.english??"" + student?.science??"";
+    const total = student?.maths + student?.english + student?.science;
     const passOrFail =
         student?.maths > 33 && student?.english > 33 && student?.science > 33
             ? "Pass"
             : "Fail";
     return (
-        <div className="col-6">
+        <div className="col-6 mt-4">
             <div
                 className="card"
                 style={{
