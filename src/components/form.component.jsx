@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import InputBox from "./input.component";
+import {addStudentToFirebase} from "../services/student.service";
 
 const Form = (props) => {
     let [student, setStudent] = useState({
@@ -13,7 +14,7 @@ const Form = (props) => {
     })
     const addStudent = (event) => {
         event.preventDefault();
-
+        addStudentToFirebase(student);
         props.addStudentFromForm(student);
     }
 
