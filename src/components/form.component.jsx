@@ -15,7 +15,7 @@ const Form = (props) => {
     const addStudent = (event) => {
         event.preventDefault();
         addStudentToFirebase(student);
-        props.addStudentFromForm(student);
+        props.setUpdateRequired(true);
     }
 
     const handleInputChange = (event) => {

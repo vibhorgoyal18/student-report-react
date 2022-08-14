@@ -1,9 +1,20 @@
 import db from "../firebase";
-import {addDoc, collection} from "firebase/firestore"
+import {addDoc, collection, getDocs} from "firebase/firestore"
 
 
 const addStudentToFirebase = async (student) => {
-    await addDoc(collection(db, "student"), student)
+    try {
+        await addDoc(collection(db, "student"), student)
+    } catch (error) {
+        console.log("Error in adding user to firebase")
+    }
 }
 
-export {addStudentToFirebase}
+const getStudentsFromFirebase = async () => {
+    const documents = await getDocs(collection(db, "student"))
+    const students = documents.docs.map(doc => doc.data());
+    console.log(students);
+    return students;
+}
+
+export {addStudentToFirebase, getStudentsFromFirebase}
